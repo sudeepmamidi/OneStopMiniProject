@@ -1,0 +1,19 @@
+﻿@model OneStopMiniProject.Models.User
+
+@{
+    ViewBag.Title = "UserDash";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<fieldset>
+    <legend>
+        @if (Session["name"] != null)
+        {
+            <text>
+                <h6>@Html.ActionLink("Logout", "Logout", "User")</h6>
+                Welcome!@Session["name"].ToString();
+            </text>
+        }
+    </legend>
+</fieldset>

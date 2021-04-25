@@ -1,0 +1,18 @@
+﻿@model OneStopMiniProject.Models.HospitalAdmin
+
+@{
+    ViewBag.Title = "Dash";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<fieldset>
+    <legend>
+        @if (Session["name"] !=null) {
+            <text>
+                <h6>@Html.ActionLink("Logout", "Logout", "Admin")</h6>
+                Welcome!@Session["name"].ToString();
+            </text>
+        }
+    </legend>
+</fieldset>

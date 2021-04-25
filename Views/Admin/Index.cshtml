@@ -1,0 +1,36 @@
+﻿@model IEnumerable<OneStopMiniProject.Models.Admin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (Session["admin_id"] == null)
+    {
+        Response.Redirect("~/Admin/Login");
+    }
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Signup Admin", "register")</p>
+<p>
+    @Html.ActionLink("Login Admin", "Login")
+</p>
+<table class="table">
+    <tr>
+        <th>s
+            @Html.DisplayNameFor(model => model.admin_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.admin_name)
+        </td>
+    </tr>
+}
+
+</table>

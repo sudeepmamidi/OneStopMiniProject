@@ -1,0 +1,24 @@
+﻿@model OneStopMiniProject.Models.Admin
+
+@{
+    ViewBag.Title = "Loggedin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["admin_id"] == null)
+    {
+        Response.Redirect("~/Admin/Login");
+    }
+}
+
+<h2>Loggedin</h2>
+
+<fieldset>
+
+    @if (Session["name"] != null)
+    {
+        <text>
+            Welcome! @Session["name"].ToString();
+            <h6>@Html.ActionLink("Logout", "Logout", "Admin")</h6>
+
+        </text>
+    }
+</fieldset>
