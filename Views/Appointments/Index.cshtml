@@ -1,14 +1,13 @@
-﻿@model IEnumerable<OneStopMiniProject.Models.Doctor>
+﻿@model IEnumerable<OneStopMiniProject.Models.Appointment>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>DoctorUpdate</h2>
+<h2>Index</h2>
 
-<p>
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -21,13 +20,13 @@
             @Html.DisplayNameFor(model => model.HospitalName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Speciality)
+            @Html.DisplayNameFor(model => model.Genders)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AvailabilityFrom)
+            @Html.DisplayNameFor(model => model.AppointmentDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AvailabilityTo)
+            @Html.DisplayNameFor(model => model.Approve)
         </th>
         <th></th>
     </tr>
@@ -44,18 +43,18 @@
             @Html.DisplayFor(modelItem => item.HospitalName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Speciality)
+            @Html.DisplayFor(modelItem => item.Genders)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AvailabilityFrom)
+            @Html.DisplayFor(modelItem => item.AppointmentDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AvailabilityTo)
+            @Html.DisplayFor(modelItem => item.Approve)
         </td>
         <td>
-            <button class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = item.Doctorid })</button> |
-            <button class="btn btn-default">@Html.ActionLink("Details", "Details", new { id = item.Doctorid }) </button>|
-            <button class="btn btn-default">@Html.ActionLink("Delete", "Delete", new { id = item.Doctorid })</button>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Doctorid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Doctorid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Doctorid })
         </td>
     </tr>
 }

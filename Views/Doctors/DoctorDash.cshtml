@@ -1,0 +1,25 @@
+﻿@model OneStopMiniProject.Models.Doctor
+
+@{
+    ViewBag.Title = "DoctorDash";
+    Layout = "~/Views/Shared/Dlayout.cshtml";
+}
+
+<h2>DOctorDash</h2>
+<h5>
+    <button class="btn btn-default">@Html.ActionLink("Update Details", "Index", "Doctors")</button>
+    <button class="btn btn-default">@Html.ActionLink("Approve Appointments", "Index", "Appointments")</button>
+</h5>
+<h5></h5>
+<fieldset>
+    <legend>
+        @if (Session["name"] != null)
+        {
+            <text>
+                <h6>@Html.ActionLink("Logout", "Logout", "Doctors")</h6>
+                Welcome!@Session["name"].ToString();
+            </text>
+        }
+    </legend>
+</fieldset>
+

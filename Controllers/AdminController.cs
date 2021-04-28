@@ -62,8 +62,13 @@ namespace OneStopMiniProject.Controllers
             return View(admin);
         }
 
-       
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login", "Admin", "Admin");
+        }
 
-        
+
+
     }
 }

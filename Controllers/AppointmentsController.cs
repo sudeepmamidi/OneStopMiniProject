@@ -10,107 +10,107 @@ using OneStopMiniProject.Models;
 
 namespace OneStopMiniProject.Controllers
 {
-    public class DoctorsController : Controller
+    public class AppointmentsController : Controller
     {
         private DataContext db = new DataContext();
 
-        // GET: Doctors
+        // GET: Appointments
         public ActionResult Index()
         {
-            return View(db.Doctors.ToList());
+            return View(db.Appointments.ToList());
         }
 
-        // GET: Doctors/Details/5
+        // GET: Appointments/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Doctor doctor = db.Doctors.Find(id);
-            if (doctor == null)
+            Appointment appointment = db.Appointments.Find(id);
+            if (appointment == null)
             {
                 return HttpNotFound();
             }
-            return View(doctor);
+            return View(appointment);
         }
 
-        // GET: Doctors/Create
+        // GET: Appointments/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Doctors/Create
+        // POST: Appointments/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Doctorid,DoctorName,HospitalId,HospitalName,Speciality,AvailabilityFrom,AvailabilityTo")] Doctor doctor)
+        public ActionResult Create([Bind(Include = "Doctorid,DoctorName,HospitalId,HospitalName,Genders,AppointmentDate,Approve")] Appointment appointment)
         {
             if (ModelState.IsValid)
             {
-                db.Doctors.Add(doctor);
+                db.Appointments.Add(appointment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(doctor);
+            return View(appointment);
         }
 
-        // GET: Doctors/Edit/5
+        // GET: Appointments/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Doctor doctor = db.Doctors.Find(id);
-            if (doctor == null)
+            Appointment appointment = db.Appointments.Find(id);
+            if (appointment == null)
             {
                 return HttpNotFound();
             }
-            return View(doctor);
+            return View(appointment);
         }
 
-        // POST: Doctors/Edit/5
+        // POST: Appointments/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Doctorid,DoctorName,HospitalId,HospitalName,Speciality,AvailabilityFrom,AvailabilityTo")] Doctor doctor)
+        public ActionResult Edit([Bind(Include = "Doctorid,DoctorName,HospitalId,HospitalName,Genders,AppointmentDate,Approve")] Appointment appointment)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(doctor).State = EntityState.Modified;
+                db.Entry(appointment).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(doctor);
+            return View(appointment);
         }
 
-        // GET: Doctors/Delete/5
+        // GET: Appointments/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Doctor doctor = db.Doctors.Find(id);
-            if (doctor == null)
+            Appointment appointment = db.Appointments.Find(id);
+            if (appointment == null)
             {
                 return HttpNotFound();
             }
-            return View(doctor);
+            return View(appointment);
         }
 
-        // POST: Doctors/Delete/5
+        // POST: Appointments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Doctor doctor = db.Doctors.Find(id);
-            db.Doctors.Remove(doctor);
+            Appointment appointment = db.Appointments.Find(id);
+            db.Appointments.Remove(appointment);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -122,24 +122,6 @@ namespace OneStopMiniProject.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        public ActionResult DoctorDash()
-        {
-            if (Session["userid"] != null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login","Users");
-            }
-        }
-
-        public ActionResult Logout()
-        {
-            Session.Abandon();
-            return RedirectToAction("Login","Users");
         }
     }
 }

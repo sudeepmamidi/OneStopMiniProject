@@ -7,6 +7,18 @@
 
 <h2>Index</h2>
 
+<fieldset>
+    <legend>
+        @if (Session["name"] != null)
+        {
+            <text>
+                <h6>@Html.ActionLink("Logout", "Logout", "Admin")</h6>
+                Welcome!@Session["name"].ToString();
+            </text>
+        }
+    </legend>
+</fieldset>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

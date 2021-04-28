@@ -130,7 +130,7 @@ namespace OneStopMiniProject.Controllers
 
         }
 
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(User user)
         {
@@ -145,6 +145,40 @@ namespace OneStopMiniProject.Controllers
                     }
                 }
         return View(user);
+        }*/
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(User user)
+        {
+            using (DataContext db = new DataContext())
+            {
+                var obj = db.Users.Where(u => u.UserId.Equals(user.UserId) && u.Password.Equals(user.Password)).FirstOrDefault();
+                if (obj != null)
+                {
+                    /*if(obj.UserId.Substring(0, 3).Equals("PAT"))
+                    {
+                        Session["user_id"] = obj.UserId.ToString();
+                        Session["name"] = obj.FirstName.ToString();
+                        return RedirectToAction("Index","User");
+                    }
+                    else if (obj.UserId.Substring(0, 3).Equals("DOC"))
+                    {
+                        Session["doctor_id"] = obj.UserId.ToString();
+                        Session["name"] = obj.FirstName.ToString();
+                        return RedirectToAction("Index","Doctor");
+                    }*/
+                    if ((int)(obj.Category) == 0)
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    else
+                        Session["userid"] = obj.UserId.ToString();
+                        Session["name"] = obj.FirstName.ToString();
+                        return RedirectToAction("DoctorDash", "Doctors");
+                    }
+            }
+            return View(user);
         }
 
         public ActionResult UserDash()
