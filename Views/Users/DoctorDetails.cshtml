@@ -1,0 +1,79 @@
+﻿@model IEnumerable<OneStopMiniProject.Models.Doctor>
+
+@{
+    ViewBag.Title = "DoctorDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UserDash</h2>
+
+<h5>
+    <button class="btn btn-default">@Html.ActionLink("Book Appointment", "Create", "Appointments")</button>
+    <button class="btn btn-default">@Html.ActionLink("Reports View", "ReportView", "Users")</button>
+    <button class="btn btn-default">@Html.ActionLink("FeedBack", "Create", "FeedBacks")</button>
+    <button class="btn btn-default">@Html.ActionLink("Questionaire", "Create", "Questions")</button>
+    <fieldset>
+        <legend>
+            @if (Session["name"] != null)
+            {
+                <text>
+                    <h6><button class="btn btn-default">@Html.ActionLink("Logout", "Logout", "Users")</button></h6>
+                    Welcome!@Session["name"].ToString();
+                </text>
+            }
+        </legend>
+    </fieldset>
+</h5>
+<h5></h5>
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DoctorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HospitalId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HospitalName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Speciality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AvailabilityFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AvailabilityTo)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HospitalId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HospitalName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Speciality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailabilityFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailabilityTo)
+            </td>
+        </tr>
+    }
+
+</table>

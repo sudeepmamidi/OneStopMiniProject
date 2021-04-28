@@ -170,7 +170,9 @@ namespace OneStopMiniProject.Controllers
                     }*/
                     if ((int)(obj.Category) == 0)
                     {
-                        return RedirectToAction("Index", "Admin");
+                        Session["userid"] = obj.UserId.ToString();
+                        Session["name"] = obj.FirstName.ToString();
+                        return RedirectToAction("DoctorDetails","Users");
                     }
                     else
                         Session["userid"] = obj.UserId.ToString();
@@ -199,6 +201,24 @@ namespace OneStopMiniProject.Controllers
             return RedirectToAction("Login");
         }
 
+        public ActionResult DoctorDetails()
+        {
+            if (Session["userid"] != null)
+            {
+                return View(db.Doctors.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+            
+        }
 
+
+        public ActionResult ReportView()
+        {
+
+            return View(db.Reports.ToList());
+        }
     }
 }

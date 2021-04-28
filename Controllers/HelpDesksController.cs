@@ -10,116 +10,107 @@ using OneStopMiniProject.Models;
 
 namespace OneStopMiniProject.Controllers
 {
-    public class HospitalDetailsController : Controller
+    public class HelpDesksController : Controller
     {
         private DataContext db = new DataContext();
 
-        // GET: HospitalDetails
+        // GET: HelpDesks
         public ActionResult Index()
         {
-            if (Session["admin_id"] != null)
-            {
-                return View(db.HospitalDetails.ToList());
-            }
-            else
-            {
-                return RedirectToAction("Login","Admin");
-            }
-           
+            return View(db.HelpDesks.ToList());
         }
 
-        // GET: HospitalDetails/Details/5
+        // GET: HelpDesks/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HospitalDetails hospitalDetails = db.HospitalDetails.Find(id);
-            if (hospitalDetails == null)
+            HelpDesk helpDesk = db.HelpDesks.Find(id);
+            if (helpDesk == null)
             {
                 return HttpNotFound();
             }
-            return View(hospitalDetails);
+            return View(helpDesk);
         }
 
-        // GET: HospitalDetails/Create
+        // GET: HelpDesks/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: HospitalDetails/Create
+        // POST: HelpDesks/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "HospitalID,HospitalName,HospitalCity,HospitalState,Zip,Certification,Operations,Achivements,Facilities,Category,Approved")] HospitalDetails hospitalDetails)
+        public ActionResult Create([Bind(Include = "Description,CreatedOn")] HelpDesk helpDesk)
         {
             if (ModelState.IsValid)
             {
-                db.HospitalDetails.Add(hospitalDetails);
+                db.HelpDesks.Add(helpDesk);
                 db.SaveChanges();
-                //return RedirectToAction("Index");
-                ViewBag.SuccessMessage = "Successfully Created"; 
+                return RedirectToAction("Index");
             }
 
-            return View(hospitalDetails);
+            return View(helpDesk);
         }
 
-        // GET: HospitalDetails/Edit/5
+        // GET: HelpDesks/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HospitalDetails hospitalDetails = db.HospitalDetails.Find(id);
-            if (hospitalDetails == null)
+            HelpDesk helpDesk = db.HelpDesks.Find(id);
+            if (helpDesk == null)
             {
                 return HttpNotFound();
             }
-            return View(hospitalDetails);
+            return View(helpDesk);
         }
 
-        // POST: HospitalDetails/Edit/5
+        // POST: HelpDesks/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HospitalID,HospitalName,HospitalCity,HospitalState,Zip,Certification,Operations,Achivements,Facilities,Category,Approved")] HospitalDetails hospitalDetails)
+        public ActionResult Edit([Bind(Include = "Description,CreatedOn")] HelpDesk helpDesk)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(hospitalDetails).State = EntityState.Modified;
+                db.Entry(helpDesk).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(hospitalDetails);
+            return View(helpDesk);
         }
 
-        // GET: HospitalDetails/Delete/5
+        // GET: HelpDesks/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HospitalDetails hospitalDetails = db.HospitalDetails.Find(id);
-            if (hospitalDetails == null)
+            HelpDesk helpDesk = db.HelpDesks.Find(id);
+            if (helpDesk == null)
             {
                 return HttpNotFound();
             }
-            return View(hospitalDetails);
+            return View(helpDesk);
         }
 
-        // POST: HospitalDetails/Delete/5
+        // POST: HelpDesks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            HospitalDetails hospitalDetails = db.HospitalDetails.Find(id);
-            db.HospitalDetails.Remove(hospitalDetails);
+            HelpDesk helpDesk = db.HelpDesks.Find(id);
+            db.HelpDesks.Remove(helpDesk);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -132,12 +123,5 @@ namespace OneStopMiniProject.Controllers
             }
             base.Dispose(disposing);
         }
-
-        public ActionResult Logout()
-        {
-            Session.Abandon();
-            return RedirectToAction("Login");
-        }
-
     }
 }

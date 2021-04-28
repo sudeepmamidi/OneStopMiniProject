@@ -129,10 +129,14 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AppointmentsController.cs" />
     <Compile Include="Controllers\DoctorsController.cs" />
+    <Compile Include="Controllers\FeedBacksController.cs" />
+    <Compile Include="Controllers\HelpDesksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalAdminController.cs" />
     <Compile Include="Controllers\HospitalDetailsController.cs" />
     <Compile Include="Controllers\NotificationLinksController.cs" />
+    <Compile Include="Controllers\QuestionsController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -165,14 +169,34 @@
     <Compile Include="Migrations\202104281221116_CreateAppointmentTable.designer.cs">
       <DependentUpon>202104281221116_CreateAppointmentTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104281716261_CreateReportTable.cs" />
+    <Compile Include="Migrations\202104281716261_CreateReportTable.Designer.cs">
+      <DependentUpon>202104281716261_CreateReportTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104281926524_CreateFeedBackTable.cs" />
+    <Compile Include="Migrations\202104281926524_CreateFeedBackTable.Designer.cs">
+      <DependentUpon>202104281926524_CreateFeedBackTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104281935098_CreateQuestionsTable.cs" />
+    <Compile Include="Migrations\202104281935098_CreateQuestionsTable.Designer.cs">
+      <DependentUpon>202104281935098_CreateQuestionsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104282008152_CreateHelpDeskTable.cs" />
+    <Compile Include="Migrations\202104282008152_CreateHelpDeskTable.Designer.cs">
+      <DependentUpon>202104282008152_CreateHelpDeskTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\DataContext.cs" />
+    <Compile Include="Models\FeedBack.cs" />
+    <Compile Include="Models\HelpDesk.cs" />
     <Compile Include="Models\HospitalAdmin.cs" />
     <Compile Include="Models\HospitalDetails.cs" />
     <Compile Include="Models\NotificationLink.cs" />
+    <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\Report.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -251,6 +275,28 @@
     <Content Include="Views\Shared\View.cshtml" />
     <Content Include="Views\Doctors\DoctorDash.cshtml" />
     <Content Include="Views\Shared\Dlayout.cshtml" />
+    <Content Include="Views\Reports\Create.cshtml" />
+    <Content Include="Views\Reports\Delete.cshtml" />
+    <Content Include="Views\Reports\Details.cshtml" />
+    <Content Include="Views\Reports\Edit.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
+    <Content Include="Views\Users\DoctorDetails.cshtml" />
+    <Content Include="Views\Users\ReportView.cshtml" />
+    <Content Include="Views\FeedBacks\Create.cshtml" />
+    <Content Include="Views\FeedBacks\Delete.cshtml" />
+    <Content Include="Views\FeedBacks\Details.cshtml" />
+    <Content Include="Views\FeedBacks\Edit.cshtml" />
+    <Content Include="Views\FeedBacks\Index.cshtml" />
+    <Content Include="Views\Questions\Create.cshtml" />
+    <Content Include="Views\Questions\Delete.cshtml" />
+    <Content Include="Views\Questions\Details.cshtml" />
+    <Content Include="Views\Questions\Edit.cshtml" />
+    <Content Include="Views\Questions\Index.cshtml" />
+    <Content Include="Views\HelpDesks\Create.cshtml" />
+    <Content Include="Views\HelpDesks\Delete.cshtml" />
+    <Content Include="Views\HelpDesks\Details.cshtml" />
+    <Content Include="Views\HelpDesks\Edit.cshtml" />
+    <Content Include="Views\HelpDesks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -289,6 +335,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104281221116_CreateAppointmentTable.resx">
       <DependentUpon>202104281221116_CreateAppointmentTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104281716261_CreateReportTable.resx">
+      <DependentUpon>202104281716261_CreateReportTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104281926524_CreateFeedBackTable.resx">
+      <DependentUpon>202104281926524_CreateFeedBackTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104281935098_CreateQuestionsTable.resx">
+      <DependentUpon>202104281935098_CreateQuestionsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104282008152_CreateHelpDeskTable.resx">
+      <DependentUpon>202104282008152_CreateHelpDeskTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

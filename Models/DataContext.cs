@@ -20,5 +20,13 @@ namespace OneStopMiniProject.Models
         public DbSet<NotificationLink> notificationLinks { get; set; }
 
         public DbSet<Appointment> Appointments { get; set; }
+
+        public DbSet<Report> Reports { get; set; }
+
+        public DbSet<FeedBack> FeedBacks { get; set; }
+
+        public DbSet<Question> Questions { get; set; }
+
+        public DbSet<HelpDesk> HelpDesks { get; set; }
     }
 }

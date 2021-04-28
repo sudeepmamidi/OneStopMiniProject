@@ -7,6 +7,12 @@
 
 <h2>Index</h2>
 
+ <h5>
+        <button class="btn btn-default">@Html.ActionLink("ViewFeedBacks", "Index", "FeedBacks")</button>
+        <button class="btn btn-default">@Html.ActionLink("QuestionsResponse", "Index", "Questions")</button>
+        <button class="btn btn-default">@Html.ActionLink("Help Response", "Index", "HelpDesks")</button>
+ </h5>
+
 <fieldset>
     <legend>
         @if (Session["name"] != null)
@@ -19,9 +25,7 @@
     </legend>
 </fieldset>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>

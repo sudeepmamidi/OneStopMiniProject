@@ -1,0 +1,36 @@
+﻿@model IEnumerable<OneStopMiniProject.Models.HelpDesk>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedOn)
+    </td>
+    <td>
+        @Html.ActionLink("Details", "Details", new { id = item.Description }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Description })
+    </td>
+</tr>
+}
+
+</table>
