@@ -1,0 +1,40 @@
+﻿@model IEnumerable<OneStopMiniProject.Models.NotificationLink>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Hospial_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Approvalstatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hospial_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Approvalstatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Hospital_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Hospital_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Hospital_id })
+        </td>
+    </tr>
+}
+
+</table>

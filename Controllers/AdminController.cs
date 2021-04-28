@@ -55,29 +55,15 @@ namespace OneStopMiniProject.Controllers
                     {
                         Session["admin_id"] = obj.admin_id.ToString();
                         Session["name"] = obj.admin_name.ToString();
-                        return RedirectToAction("Loggedin");
+                        return RedirectToAction("Index","HospitalDetails");
                     }
                 }
             }
             return View(admin);
         }
 
-        public ActionResult Loggedin()
-        {
-            if (Session["admin_id"]!=null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
-        }
+       
 
-        public ActionResult Logout()
-        {
-            Session.Abandon();
-            return RedirectToAction("Login");
-        }
+        
     }
 }

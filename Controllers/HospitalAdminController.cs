@@ -55,22 +55,16 @@ namespace OneStopMiniProject.Controllers
                     {
                         Session["hospitaladmin_id"] = obj.hospitaladmin_id.ToString();
                         Session["name"] = obj.hadmin_name.ToString();
-                        return RedirectToAction("Dash");
+                        return RedirectToAction("create","HospitalDetails");
                     }
                 }
         return View(hospitalAdmin);
         }
 
-        public ActionResult Dash()
+        public ActionResult HospitalAdminDash()
         {
-            if (Session["hospitaladmin_id"] !=null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
+            return View();
         }
+
     }
 }

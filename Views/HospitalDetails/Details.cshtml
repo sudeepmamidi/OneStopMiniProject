@@ -1,0 +1,113 @@
+﻿@model OneStopMiniProject.Models.HospitalDetails
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["admin_id"] == null)
+    {
+        Response.Redirect("~/Admin/Login");
+    }
+}
+
+<h2>Details</h2>
+<fieldset>
+
+    @if (Session["name"] != null)
+    {
+        <text>
+            Welcome @Session["name"].ToString() !;
+            <h6>@Html.ActionLink("Logout", "Logout", "Admin")</h6>
+
+        </text>
+    }
+</fieldset>
+<div>
+    <h4>HospitalDetails</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HospitalName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HospitalName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HospitalCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HospitalCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HospitalState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HospitalState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Certification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Certification)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Operations)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Operations)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Achivements)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Achivements)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Facilities)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Facilities)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Approved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Approved)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HospitalID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,38 @@
+﻿@model OneStopMiniProject.Models.NotificationLink
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NotificationLink</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Hospital_id)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Hospial_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hospial_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Approvalstatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Approvalstatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Hospital_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
